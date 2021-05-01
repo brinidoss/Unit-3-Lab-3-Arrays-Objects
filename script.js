@@ -27,7 +27,7 @@ let submissions = [
 
 console.log(submissions);
 
-//Add Submission
+//ADD SUBMISSION
 
 function addSubmission(array, newName, newScore, newDate) {
 
@@ -47,7 +47,7 @@ function addSubmission(array, newName, newScore, newDate) {
 
 //console.log(submissions);
 
-//Delete by Index
+//DELETE BY INDEX
 
 function deleteSubmissionByIndex(array, index) {
     
@@ -58,7 +58,7 @@ function deleteSubmissionByIndex(array, index) {
 
 //console.log(submissions);
 
-//delete by Name
+// DELETE BY NAME
 
 function deleteSubmissionByName(array, name) {
  
@@ -70,7 +70,7 @@ function deleteSubmissionByName(array, name) {
 //deleteSubmissionByName(submissions, 'Joe');
 //console.log(submissions);
 
-//edit submission 
+//EDIT SUBMISSION WITH NEW SCORE
 
 // function editSubmission(array, index, score) {
 //     const scoreIndex = array.findIndex((item) => item.score === index); 
@@ -83,9 +83,10 @@ function deleteSubmissionByName(array, name) {
 
 // console.log(submissions);
 
-function editSubmission(array, index, newScore) {
-    array[index].score = newScore;
+function editSubmission(array, index, /*new*/Score) {
+    array[index].score = /*new*/Score;
     newScore >= 60 ? array[index].passed = true : array[index].passed = false;
+    //array[index].passed = score >60;
 }
 //console.log(submissions);
 //editSubmission(submissions, 1, 40);
@@ -104,22 +105,60 @@ function editSubmission(array, index, newScore) {
 //     }
 // })
 
-function findSubmissionByName(array,name) {
 
+// USING NAME TO CALL BACK OBJECT
+
+function findSubmissionByName(array, name) {
+
+    const findName = array.find((item) => item.name === name);
+        return findName;
 }
+
+//console.log(findSubmissionByName(submissions, 'Jack'));
+
+
+//FIND LOWEST SCORE
 
 function findLowestScore(array) {
-
+    let lowScore = array[0];
+    //lowScore > item.score ? lowScore === item.score : lowScore === 100
+    array.forEach((item) => {
+        if (item.score < lowScore.score) {
+            lowScore = item;
+        }
+    })
+    return lowScore;
 }
 
+//console.log(findLowestScore(submissions));
+
+//AVERAGE SCORE
 function findAverageScore(array) {
+    let avgScore = 0;
 
+    for (item of array) {
+        avgScore = avgScore + item.score;
+    };
+
+    return avgScore = avgScore / array.length;
 }
+
+//console.log(findAverageScore(submissions));
+
+//FILTER PASSING SCORE
 
 function filterPassing(array) {
-
+    const passScore = array.filter((item) => item.passed); //=== true);
+    return passScore;
 }
+
+console.log(filterPassing(submissions));
+
+// FILTER 90 SCORE AND ABOVE
 
 function filter90AndAbove(array) {
-
+    const superbScore = array.filter((item) => item.score >= 90);
+    return superbScore;
 }
+
+console.log(filter90AndAbove(submissions));
