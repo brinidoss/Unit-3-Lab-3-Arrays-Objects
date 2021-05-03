@@ -121,7 +121,6 @@ function findSubmissionByName(array, name) {
 
 function findLowestScore(array) {
     let lowScore = array[0];
-    //lowScore > item.score ? lowScore === item.score : lowScore === 100
     array.forEach((item) => {
         if (item.score < lowScore.score) {
             lowScore = item;
@@ -130,7 +129,7 @@ function findLowestScore(array) {
     return lowScore;
 }
 
-//console.log(findLowestScore(submissions));
+console.log(findLowestScore(submissions));
 
 //AVERAGE SCORE
 function findAverageScore(array) {
